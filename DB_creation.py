@@ -19,6 +19,5 @@ try:
     print("Database 'credit_analysis'created successfully!")
 except psycopg2.errors.DuplicateDatabase:
     print("Database 'credit_analysis'already exists.")
-
 cursor.close()
 conn.close()
