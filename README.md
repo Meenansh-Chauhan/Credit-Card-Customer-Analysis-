@@ -77,3 +77,20 @@ To run the full data pipeline, execute the scripts in the following order:
 
 ## Note to Reviewers
 > **Security Note:** The source code currently contains hardcoded PostgreSQL credentials for a local development environment. In a production environment, these would be managed via environment variables or a secure vault.
+
+
+## Analytic Insights
+-no outlier customer spendings
+-spending increases gradually among top spending customers
+-average spending is 5k, while highest is 37k, which shows a huge gap between average and top spending customers
+-bills category is highest revenue generator with 1.8 M, followed by Entertainment at 1.7M
+-lowest generating category was unknown with 800k of amount.
+-every category has an average spending per transaction, between 4.9k to 5.2k, nothing unusual with bills category on top at 5.2k.
+-Month of January Is creating highest revenue at 800k
+-followed by the lowest revenue in February at 520k, The Drop  in February is unpredictable for reason till now.
+-rest all month sits on nearly average value of 750K.
+-every month has an average spending per transaction, between 4.7k to 5.4k, nothing unusual.
+ ### till now we can observe that since average transaction value is around 5k across every category and month, thus we can conclude that revenue difference is due to frequency of transactions, not due to increase in spending values.
+
+-while the low_spending segment has 747 customers and medium_spending segment has 277 customers in total, still both of the category generate revenue around 4M, meanwhile the high_spending segment has customers only 12 customers generating 378K of revenue amount.
+thus concluding, the Low_spending segment has highest frequency of transactions, but since medium segment also generates the same revenue even with low count of customers, we an focus on promoting frequency in medium category for generating more  revenue.
