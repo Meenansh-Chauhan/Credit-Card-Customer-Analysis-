@@ -1,96 +1,306 @@
-# Credit Card Customer Analytics
+# Credit Card Customer Segmentation & Spending Analytics
 
-This project is a comprehensive Python and SQL-based data analysis pipeline designed to process, clean, and analyze credit card customer data and their transactions. It demonstrates data engineering principles including data generation, cleaning, preprocessing, and database schema creation using PostgreSQL.
+## Overview
 
-## Features
+This project demonstrates an end-to-end analytics workflow for customer segmentation and spending analysis in the Financial Services domain. The project focuses on transforming raw customer and transaction data into meaningful business insights using Python, PostgreSQL, SQL, and Tableau.
 
-- **Data Generation (`generate_transactions.py`)**: Generates a realistic but messy dataset of customer transactions (including missing values, negative amounts, and duplicates) to simulate real-world data engineering challenges.
-- **Data Cleaning (`customer_cleaning.py`, `Transactions_cleaning.py`)**: 
-  - Cleans and formats raw customer demographic data.
-  - Cleans transaction data by handling nulls, removing duplicates, and extracting useful time-series features (month, weekday, day).
-- **Database Initialization (`DB_creation.py`)**: Automates the creation of a PostgreSQL database (`credit_analysis`) using `psycopg2`.
-- **Table Management (`Table_Creation.py`)**: Prepares connections and pandas DataFrames for bulk loading data into the PostgreSQL database.
+The repository covers the complete analytical pipeline, including data cleaning, synthetic transaction generation, database design, SQL analysis, exploratory data analysis, and customer segmentation.
 
-## Technologies Used
-- **Python 3**
-- **Pandas & NumPy**: For robust data manipulation and cleaning.
-- **PostgreSQL**: For storing and querying the relational data.
-- **psycopg2**: PostgreSQL database adapter for Python.
+---
 
-## Project Files Description
-- `Credit_card.csv` / `transactions_raw.csv`: Raw, unprocessed data files.
-- `Clean_Customer.csv` / `Clean_Transaction.csv`: Cleaned datasets ready for database insertion or analysis.
-- `generate_transactions.py`: Script to generate mock transaction data for existing customers.
-- `customer_cleaning.py`: Script to clean the raw credit card customer data.
-- `Transactions_cleaning.py`: Script to clean the raw transaction data.
-- `DB_creation.py`: Script to initialize the PostgreSQL database.
-- `Table_Creation.py`: Script for establishing database connections and reading data for table creation.
+# Business Objective
 
-## Setup Instructions
+The objective of this project is to help a financial institution better understand customer spending behaviour by:
 
-### Prerequisites
-1. Python 3.8+ installed on your machine.
-2. PostgreSQL installed and running locally on port `5432`.
+- Identifying high-value customers
+- Segmenting customers based on spending behaviour
+- Understanding transaction patterns
+- Supporting targeted marketing strategies
+- Building a reusable analytical dataset for future predictive analytics
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone <your-repository-url>
-   cd "Credit Card Customer Analytics"
-   ```
+---
 
-2. Create a virtual environment and activate it:
-   ```bash
-   python -m venv .venv
-   # On Windows:
-   .venv\Scripts\activate
-   # On macOS/Linux:
-   source .venv/bin/activate
-   ```
+# Project Status
 
-3. Install the required dependencies:
-   ```bash
-   pip install pandas numpy psycopg2
-   ```
+**Current Phase:** Phase 1 – Customer Segmentation & Spending Analytics
 
-### Usage Workflow
+### Completed
 
-To run the full data pipeline, execute the scripts in the following order:
+- Customer Data Cleaning
+- Synthetic Transaction Generation
+- Transaction Data Cleaning
+- PostgreSQL Database Design
+- SQL Analysis
+- SQL Views
+- Python Exploratory Data Analysis
+- Customer Segmentation
+- Visualization Generation
 
-1. **Generate Data (Optional)**: If you want to regenerate the messy transaction dataset.
-   ```bash
-   python generate_transactions.py
-   ```
+### In Progress
 
-2. **Clean the Data**:
-   ```bash
-   python customer_cleaning.py
-   python Transactions_cleaning.py
-   ```
+- Tableau Dashboard
 
-3. **Database Setup**:
-   *Note: Ensure your PostgreSQL server is running and update the credentials in the script if necessary.*
-   ```bash
-   python DB_creation.py
-   python Table_Creation.py
-   ```
+### Planned
 
-## Note to Reviewers
-> **Security Note:** The source code currently contains hardcoded PostgreSQL credentials for a local development environment. In a production environment, these would be managed via environment variables or a secure vault.
+- Business Dashboard Storytelling
+- Documentation Refinement
 
+---
 
-## Analytic Insights
--no outlier customer spendings
--spending increases gradually among top spending customers
--average spending is 5k, while highest is 37k, which shows a huge gap between average and top spending customers
--bills category is highest revenue generator with 1.8 M, followed by Entertainment at 1.7M
--lowest generating category was unknown with 800k of amount.
--every category has an average spending per transaction, between 4.9k to 5.2k, nothing unusual with bills category on top at 5.2k.
--Month of January Is creating highest revenue at 800k
--followed by the lowest revenue in February at 520k, The Drop  in February is unpredictable for reason till now.
--rest all month sits on nearly average value of 750K.
--every month has an average spending per transaction, between 4.7k to 5.4k, nothing unusual.
- ### till now we can observe that since average transaction value is around 5k across every category and month, thus we can conclude that revenue difference is due to frequency of transactions, not due to increase in spending values.
+# Technology Stack
 
--while the low_spending segment has 747 customers and medium_spending segment has 277 customers in total, still both of the category generate revenue around 4M, meanwhile the high_spending segment has customers only 12 customers generating 378K of revenue amount.
-thus concluding, the Low_spending segment has highest frequency of transactions, but since medium segment also generates the same revenue even with low count of customers, we an focus on promoting frequency in medium category for generating more  revenue.
+- Python
+- Pandas
+- NumPy
+- PostgreSQL
+- SQL
+- Jupyter Notebook
+- Matplotlib
+- Tableau (In Progress)
+
+---
+
+# Repository Structure
+
+```
+Credit Card Customer Analytics/
+
+│
+├── data/
+│   ├── Credit_card.csv
+│   ├── Clean_Customer.csv
+│   ├── Clean_Transaction.csv
+│   ├── customer_summary.csv
+│   └── transactions_raw.csv
+│
+├── Python_src/
+│   ├── customer_cleaning.py
+│   ├── Transactions_cleaning.py
+│   ├── generate_transactions.py
+│   ├── DB_creation.py
+│   ├── Table_Creation.py
+│   └── EDA_Customer_Segmentation.ipynb
+│
+├── SQL/
+│   ├── database_creation.sql
+│   ├── table_creation.sql
+│   ├── data_validation.sql
+│   ├── customer_analysis.sql
+│   ├── transaction_analysis.sql
+│   ├── customer_segmentation.sql
+│   └── views.sql
+│
+├── visuals/
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
+
+---
+
+# Dataset Description
+
+## Customer Dataset
+
+**Rows:** 1,525
+
+**Columns**
+
+- id
+- gender
+- car_owner
+- propert_owner
+- children
+- income
+- type_income
+- education
+- marital_status
+- housing_type
+- age
+- days_employed
+- mobile_phone
+- work_phone
+- phone
+- email_id
+- type_occupation
+- family_members
+
+---
+
+## Transaction Dataset
+
+**Rows:** 1,675
+
+**Columns**
+
+- id
+- customer_id
+- amount
+- category
+- date
+- month
+- weekday
+- day
+
+---
+
+# Project Workflow
+
+```
+Raw Customer Dataset
+        │
+        ▼
+Customer Data Cleaning
+        │
+        ▼
+Clean Customer Dataset
+        │
+        ▼
+Synthetic Transaction Generation
+        │
+        ▼
+Raw Transaction Dataset
+        │
+        ▼
+Transaction Data Cleaning
+        │
+        ▼
+Clean Transaction Dataset
+        │
+        ▼
+PostgreSQL Database
+        │
+        ▼
+SQL Analysis
+        │
+        ▼
+Python Exploratory Data Analysis
+        │
+        ▼
+Customer Segmentation
+        │
+        ▼
+Customer Summary Dataset
+        │
+        ▼
+Tableau Dashboard
+```
+
+---
+
+# SQL Modules
+
+The SQL folder includes:
+
+- Database Creation
+- Table Creation
+- Data Validation
+- Customer Analysis
+- Transaction Analysis
+- Customer Segmentation
+- Reusable SQL Views
+
+---
+
+# Python Analysis
+
+The notebook is divided into the following sections:
+
+### Section A
+
+Dataset Overview
+
+- Data Loading
+- Data Validation
+- Descriptive Statistics
+
+### Section B
+
+Transaction Analysis
+
+- Revenue KPIs
+- Category Performance
+- Monthly Revenue Analysis
+- Monthly Transaction Analysis
+- Transaction Distribution
+- Top Spending Customers
+
+### Section C
+
+Customer Spending Analysis
+
+- Revenue by Age Group
+- Revenue by Gender
+- Revenue by Income Type
+- Revenue by Education
+- Revenue by Occupation
+- Revenue by Housing Type
+
+### Section D
+
+Customer Segmentation
+
+- Customer Summary Dataset
+- Spending Distribution
+- Spending Segmentation
+- Segment Comparison
+- Tableau Dataset Export
+
+---
+
+# Current Outputs
+
+Generated visualizations include:
+
+- Revenue by Spending Category
+- Monthly Revenue Trend
+- Monthly Transaction Volume
+- Transaction Amount Distribution
+- Top Spending Customers
+- Revenue by Age Group
+- Revenue by Gender
+- Revenue by Income Type
+- Revenue by Education
+- Revenue by Occupation
+- Revenue by Housing Type
+- Customer Spending Distribution
+- Customer Segment Distribution
+- Revenue by Spending Segment
+- Average Spending by Segment
+- Average Transactions by Segment
+
+---
+
+# Future Roadmap
+
+## Phase 1
+
+Customer Segmentation & Spending Analytics
+
+(Current Phase)
+
+---
+
+## Phase 2
+
+Customer Churn Prediction
+
+---
+
+## Phase 3
+
+Customer Retention Analytics
+
+Potential future enhancements:
+
+- Customer Lifetime Value (CLV)
+- Credit Risk Analytics
+
+---
+
+# Author
+
+**Meenansh Chauhan**
+
+Business Analytics | Data Analytics | SQL | Python | PostgreSQL | Tableau
