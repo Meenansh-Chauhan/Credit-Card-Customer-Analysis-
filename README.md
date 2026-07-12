@@ -10,7 +10,9 @@ The repository covers the complete analytical pipeline, including data cleaning,
 
 # Business Objective
 
-The objective of this project is to help a financial institution better understand customer spending behaviour by:
+A financial institution wants to better understand customer spending behaviour, identify high-value customer groups, and uncover demographic patterns that can support targeted marketing campaigns and future predictive analytics.
+
+This project transforms raw customer and transaction data into actionable business insights through SQL, Python, PostgreSQL, and Tableau:
 
 - Identifying high-value customers
 - Segmenting customers based on spending behaviour
@@ -146,42 +148,42 @@ Credit Card Customer Analytics/
 
 ```
 Raw Customer Dataset
-        │
-        ▼
-Customer Data Cleaning
-        │
-        ▼
+
+↓
+
+Python Cleaning
+
+↓
+
 Clean Customer Dataset
-        │
-        ▼
+
+↓
+
 Synthetic Transaction Generation
-        │
-        ▼
-Raw Transaction Dataset
-        │
-        ▼
-Transaction Data Cleaning
-        │
-        ▼
-Clean Transaction Dataset
-        │
-        ▼
-PostgreSQL Database
-        │
-        ▼
+
+↓
+
+PostgreSQL
+
+↓
+
 SQL Analysis
-        │
-        ▼
-Python Exploratory Data Analysis
-        │
-        ▼
-Customer Segmentation
-        │
-        ▼
-Customer Summary Dataset
-        │
-        ▼
-Tableau Dashboard
+
+↓
+
+Customer Summary
+
+↓
+
+Python EDA
+
+↓
+
+Tableau Dashboards
+
+↓
+
+Business Insights
 ```
 
 ---
@@ -316,3 +318,17 @@ Business Analytics | Data Analytics | SQL | Python | PostgreSQL | Tableau
 # Credit Card Customer Segmentation & Spending Analytics
 
 An end-to-end Business Analytics project demonstrating customer segmentation, spending analytics, SQL data modeling, Python EDA, PostgreSQL database design, and interactive Tableau dashboards.
+
+# key insights 
+
+Working professionals generated nearly half of total revenue.
+
+Customers aged 30–39 contributed the highest spending.
+
+Bills and Entertainment dominated transaction categories.
+
+Medium Spending customers formed approximately 50% of customers.
+
+Laborers generated the highest spending among occupational groups.
+
+Revenue remained relatively stable throughout the year with seasonal fluctuations.
