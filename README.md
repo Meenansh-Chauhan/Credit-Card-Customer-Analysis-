@@ -35,9 +35,6 @@ The objective of this project is to help a financial institution better understa
 - Python Exploratory Data Analysis
 - Customer Segmentation
 - Visualization Generation
-
-### In Progress
-
 - Tableau Dashboard
 
 ### Planned
@@ -248,6 +245,17 @@ Customer Segmentation
 - Tableau Dataset Export
 
 ---
+# Tableau Dashboard
+
+Dashboard page 1
+
+![alt text](image.png)
+
+Dashboard page 2
+
+![alt text](image-1.png)
+
+---
 
 # Current Outputs
 
@@ -304,3 +312,7 @@ Potential future enhancements:
 **Meenansh Chauhan**
 
 Business Analytics | Data Analytics | SQL | Python | PostgreSQL | Tableau
+
+# Credit Card Customer Segmentation & Spending Analytics
+
+An end-to-end Business Analytics project demonstrating customer segmentation, spending analytics, SQL data modeling, Python EDA, PostgreSQL database design, and interactive Tableau dashboards.
