@@ -241,7 +241,8 @@ The SQL folder includes:
 - Transaction Analysis
 - Customer Segmentation
 - Reusable SQL Views
-- Data Validation queries were run against both customer and transaction tables prior to analysis, checking for null values, duplicate IDs, and referential mismatches between datasets.
+
+Data Validation queries were run against both customer and transaction tables prior to analysis, checking for null values, duplicate IDs, and referential mismatches between datasets.
 
 ---
 
@@ -286,6 +287,7 @@ Customer Segmentation
 - Customer Summary Dataset
 - Spending Distribution
 - Spending Segmentation
+- Customer Recency
 - Segment Comparison
 - Tableau Dataset Export
 
