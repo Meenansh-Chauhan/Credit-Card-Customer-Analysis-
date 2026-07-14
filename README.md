@@ -22,6 +22,23 @@ This project transforms raw customer and transaction data into actionable busine
 
 ---
 
+## Requirements Translation
+
+The business objective was broken into specific analytical requirements before development:
+
+| Business Ask | Requirement | Deliverable |
+|---|---|---|
+| Identify high-value customers | Spending-based segmentation with defined value tiers | Customer Segmentation module (Section D) |
+| Understand transaction patterns | Category, monthly, and distribution-level transaction analysis | Transaction Analysis module (Section B) |
+| Uncover demographic drivers of spend | Revenue breakdown by age, gender, income type, education, occupation, housing | Customer Spending Analysis module (Section C) |
+| Support targeted marketing | Segment-level summary dataset exportable for campaign targeting | Tableau-ready Customer Summary Dataset |
+| Build a reusable analytical base | Normalized PostgreSQL schema supporting repeatable queries | Database Creation + Views (SQL Modules) |
+
+This ensured each SQL/Python module was scoped to a specific stakeholder question rather than open-ended exploration.
+
+---
+
+
 # Project Status
 
 **Current Phase:** Phase 1 – Customer Segmentation & Spending Analytics
@@ -56,6 +73,8 @@ This project transforms raw customer and transaction data into actionable busine
 - Jupyter Notebook
 - Matplotlib
 - Tableau (In Progress)
+
+Database design follows core RDBMS/DBMS principles — normalized relational structure across customer and transaction tables, referential integrity via customer_id, and reusable SQL views for repeatable analysis.
 
 ---
 
@@ -144,6 +163,29 @@ Credit Card Customer Analytics/
 
 ---
 
+## Key Findings
+
+- **Working professionals** generated nearly half of total revenue — the single largest income-type contributor.
+- Customers aged **30–39** contributed the highest spending among all age groups.
+- **Bills** and **Entertainment** were the dominant transaction categories by volume and value.
+- **Medium Spending** customers formed approximately 50% of the customer base — the largest single tier.
+- **Laborers** generated the highest spending among occupational groups, an unexpected result worth highlighting to stakeholders.
+- Revenue remained relatively stable across the year, with only seasonal fluctuations rather than sharp swings.
+
+---
+
+## Customer Segmentation (RFM-Based)
+
+Customers were segmented using Recency, Frequency, and Monetary (RFM) dimensions:
+
+- **Recency** — days since last transaction, tiered via SQL (Low/Medium/High recency)
+- **Frequency** — total transaction count per customer, tiered via SQL
+- **Monetary** — total spending and average transaction value, tiered via SQL
+
+Frequency and Monetary segments are visualized in the Tableau dashboard (Spending Segment views); Recency scoring is available in the underlying dataset (`customer_summary.csv`) for extended segmentation use.
+
+---
+
 # Project Workflow
 
 ```
@@ -199,6 +241,7 @@ The SQL folder includes:
 - Transaction Analysis
 - Customer Segmentation
 - Reusable SQL Views
+- Data Validation queries were run against both customer and transaction tables prior to analysis, checking for null values, duplicate IDs, and referential mismatches between datasets.
 
 ---
 
@@ -251,11 +294,11 @@ Customer Segmentation
 
 Dashboard page 1
 
-![alt text](image.png)
+![alt text](page_1.png)
 
 Dashboard page 2
 
-![alt text](image-1.png)
+![alt text](page_2.png)
 
 ---
 
@@ -314,21 +357,3 @@ Potential future enhancements:
 **Meenansh Chauhan**
 
 Business Analytics | Data Analytics | SQL | Python | PostgreSQL | Tableau
-
-# Credit Card Customer Segmentation & Spending Analytics
-
-An end-to-end Business Analytics project demonstrating customer segmentation, spending analytics, SQL data modeling, Python EDA, PostgreSQL database design, and interactive Tableau dashboards.
-
-# key insights 
-
-Working professionals generated nearly half of total revenue.
-
-Customers aged 30–39 contributed the highest spending.
-
-Bills and Entertainment dominated transaction categories.
-
-Medium Spending customers formed approximately 50% of customers.
-
-Laborers generated the highest spending among occupational groups.
-
-Revenue remained relatively stable throughout the year with seasonal fluctuations.

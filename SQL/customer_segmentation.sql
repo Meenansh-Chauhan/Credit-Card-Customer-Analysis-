@@ -22,6 +22,49 @@ GROUP BY customer_id
 ORDER BY total_spending DESC;
 
 /*===========================================================================
+1B. CUSTOMER RECENCY
+Purpose:
+Calculate days since each customer's last transaction, relative to the most
+recent transaction date in the dataset.
+===========================================================================*/
+
+WITH last_txn AS (
+
+SELECT
+
+customer_id,
+
+MAX(date) AS last_transaction_date
+
+FROM transactions
+
+GROUP BY customer_id
+
+)
+
+SELECT
+
+customer_id,
+
+last_transaction_date,
+
+(SELECT MAX(date) FROM transactions) - last_transaction_date AS recency_days,
+
+CASE NTILE(3) OVER(ORDER BY (SELECT MAX(date) FROM transactions) - last_transaction_date)
+
+WHEN 1 THEN 'High Recency'
+
+WHEN 2 THEN 'Medium Recency'
+
+ELSE 'Low Recency'
+
+END AS recency_segment
+
+FROM last_txn
+
+ORDER BY recency_days;
+
+/*===========================================================================
 2. CUSTOMER SEGMENTATION
 Purpose:
 Divide customers into Low, Medium and High spending groups.
